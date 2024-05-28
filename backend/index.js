@@ -13,13 +13,15 @@ app.get('/', (req,res) => {
 })
 
 
+
 app.use('/user/auth/', authRouter)               
 app.use('/user/transactions/', transactionRouter)
 app.use('/user/budget/', budgetRouter)
 app.use('/user/category/', categoryRouter)
 
 
-app.listen(9090, async() => {
+
+app.listen(process.env.PORT, async() => {
     try{
     await DBconnection
     console.log('Successfully connected to the DB')
@@ -29,9 +31,5 @@ app.listen(9090, async() => {
     }
     console.log(`Server is running on port ${process.env.PORT}`)
 })
-
-
-
-
 
 
